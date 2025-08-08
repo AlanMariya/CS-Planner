@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="others.css">
+    <style>
+        .container h2 {
+            color: #462B66;
+            font-size: 24px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #462B66;
+            font-size: 16px;
+        }
+
+        .form-group input {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class="index text-center">
+        <img id="logo1" src="vimala logo.jfif" alt="logo" width="23px" height="23px">
+        <img id="logo1" src="logo.png.jpeg" alt="logo" width="23px" height="23px">
+        <strong>CS DEPARTMENT PLANNER</strong>
+    </header>
+    
+    <div class="navbar" id="indexnav">
+        <a href="others.html">Home</a>
+        <button onclick="logout()" id="logout" class="btn btn-danger pull-right">LogOut</button>
+    </div>
+
+    <div class="container">
+        <h2>STUDENT DETAILS</h2>
+        <form method="post">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="registerNumber">Register Number</label>
+                    <input type="text" class="form-control" id="registerNumber" placeholder="Enter register number" name="registerNumber">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="duration">Duration</label>
+                    <input type="text" class="form-control" id="duration" placeholder="Enter Duration (e.g., 2023-2024)" name="duration">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>MY PERFORMANCE</h2>
+        <form action="stdupload.php" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="sem1">Semester 1</label>
+                    <input type="file" name="sem1" id="sem1">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="sem2">Semester 2</label>
+                    <input type="file" name="sem2" id="sem2">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="sem3">Semester 3</label>
+                    <input type="file" name="sem3" id="sem3">
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="sem4">Semester 4</label>
+                    <input type="file" name="sem4" id="sem4">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="sem5">Semester 5</label>
+                    <input type="file" name="sem5" id="sem5">
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <input type="submit" value="Upload All Files" class="btn btn-success">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

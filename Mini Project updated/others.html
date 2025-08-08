@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Department Planner</title>
+    <link rel="stylesheet" href="others.css">
+</head>
+<body>
+    <header class="index">
+        <img id="logo" src="vimala logo.jfif" alt="logo" width="23px" height="23px">
+        <img id="logo1" src="logo.png.jpeg" alt="vimala" width="23px" height="23px"> CS DEPARTMENT PLANNER
+    </header>
+
+    <div class="navbar" id="indexnav">
+        <a href="#" onclick="navigateTo('announcements')">Announcements</a>
+        <a href="#" onclick="navigateTo('programs conducted')">Programs Conducted</a>
+        <a href="#" onclick="navigateTo('coursesAndSemester')">Courses And Semester</a>
+        <button id="logout" onclick="logout()">LogOut</button>
+    </div>
+
+    <section id="content">
+        <!-- Content will be loaded dynamically here -->
+    </section>
+
+    <script>
+        // JavaScript code to handle navigation and content loading
+        function navigateTo(page) {
+            fetchPage(page + '.html');
+        }
+
+        function fetchPage(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('content').innerHTML = html;
+
+                    // Extract and execute scripts from the loaded content
+                    const scripts = document.getElementById('content').querySelectorAll("script");
+                    scripts.forEach(script => {
+                        const newScript = document.createElement("script");
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+
+                    // Attach event listeners after content is loaded
+                    attachEventListeners();
+                })
+                .catch(error => console.error('Error fetching page:', error));
+        }
+
+        function attachEventListeners() {
+            document.querySelectorAll("select").forEach(select => {
+                select.addEventListener("change", function() {
+                    const course = this.id; // Get the course ID (Bvoc, BSC, MSC)
+                    showSubjects(course);  // Call the function to show subjects
+                });
+            });
+        }
+
+        // Ensure the default page loads on startup
+        document.addEventListener("DOMContentLoaded", function() {
+            navigateTo('announcements');
+        });
+    </script>
+<script>
+    function logout() {
+        window.location.href = "login.html";  // Redirects to the login page
+    }
+</script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+</body>
+</html>
